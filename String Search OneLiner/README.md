@@ -6,7 +6,7 @@ the next step you may like to analyze the context around each hit. For example, 
 like to analyze all the strings found in the corresponding clusters.
 
 To analyze all the strings in all this clusters manually one by one could become time
-consuming and much work. The idea is to have a bash oneliner, to support this activity.
+consuming and much work. The idea is to have a bash OneLiner, to support this activity.
 
 ## Example
 
@@ -76,19 +76,16 @@ Output:
 
 So I got 6 hits in total with different byte offsets.
 
-Doing the further investigation manually, for each of the 6 byte offsets,
-I have to investigate like this:
-1. Calculate the cluster number for the byte offset
-2. Is this a new cluster number? Did I got it already before, than ignore it
-3. Display all strings of this cluster
+### Further investigation
 
-### OneLiner do do all this work
+For doing the further investigation, for each byte offset of the 6 findings I have to do the following steps:
 
-The OneLiner do the following:
 1. Read the file ```evidence.txt``` line by line
-2. For each line extract the byte offset and calculate the cluster number.
+2. For each line extract the byte offset and calculate the corresponding cluster number.
 3. Sort the cluster numbers and remove duplicates
-4. Read the clusters and search the strings
+4. Read the raw clusters from the disk image and extract all the strings
+
+All this steps could be realized with the following command line:
 
 Command:
 ~~~
