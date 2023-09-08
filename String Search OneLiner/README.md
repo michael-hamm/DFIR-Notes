@@ -122,8 +122,7 @@ FILE0
 .....
 ~~~
 
-
-
-
+Now I can review the strings surrounding my search string *evidence* within the 4096 bytes cluster 
+and decide, if the cluster could be relevant for my investigation.
 
 
