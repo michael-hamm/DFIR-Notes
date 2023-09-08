@@ -2,17 +2,17 @@
 
 Performing a string search on a big disk image can lead to a huge amount of findings.
 As a result you usually get the byte offset and the line of strings for the hit. In
-the next step you may like to analyze the context arround the hit, like all the strings
-found in the corresponding cluster.
+the next step you may like to analyze the context around each hit. For example, you
+like to analyze all the strings found in the corresponding clusters.
 
-To investigate the strings of this all this clusters manually one by one could become
-time consuming and much work. The idea is to have a bash oneliner, to support this activity.
+To analyze all the strings in all this clusters manually one by one could become time
+consuming and much work. The idea is to have a bash oneliner, to support this activity.
 
 ## Example
 
-In this example I will use a very small disk image to illustrate the problem. So I receive 
-a disk image "sample.raw" for investigation. I have to search the string _evidence_ and
-the context it is found. Here the steps how to proceed:
+In this example I will use a very small disk image to illustrate the problem. So I 
+created a disk image ```sample.raw``` for investigation. I have to search the string 
+*evidence* and analyze the context it is found. Here the steps how to proceed:
 
 ### 1. Read the partition table
 
@@ -56,8 +56,8 @@ The cluster size is obviously 4096 bytes per cluster.
 
 ### Do the sting search
 
-Now I search the complete partition for our search string _evidence_. 
-As a resut I also like to get the offset of the hit in byte and store
+Now I search the complete partition for our search string *evidence*. 
+As a result I also like to get the offset of the hit in byte and store
 the findings in the file ```evidence.txt```
 
 Command:
@@ -85,7 +85,7 @@ I have to investigate like this:
 ### OneLiner do do all this work
 
 The OneLiner do the following:
-1. Read the resultat out of the file: ```evidence.txt```
+1. Read the file ```evidence.txt``` line by line
 2. For each line extract the byte offset and calculate the cluster number.
 3. Sort the cluster numbers and remove duplicates
 4. Read the clusters and search the strings
