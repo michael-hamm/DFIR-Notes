@@ -62,7 +62,7 @@ the findings in the file ```evidence.txt```
 
 Command:
 ~~~
-blkls -e -o 2048 sample.raw | strings -a -td | grep -i evidence | tee -a evidence.txt
+$ blkls -e -o 2048 sample.raw | strings -a -td | grep -i evidence | tee -a evidence.txt
 ~~~
 Output:
 ~~~
@@ -89,11 +89,12 @@ All this steps could be realized with the following command line:
 
 Command:
 ~~~
-cat evidence.txt | while read x; do echo $(( `echo $x | cut -f1 -d" "` / 4096 )); done | sort | uniq | xargs -I {} blkcat -o 2048 sample.raw {} | strings | less
+$ cat evidence.txt | while read x; do echo $(( `echo $x | cut -f1 -d" "` / 4096 )); done | sort | uniq | xargs -I {} sh -c 'echo "----- Start Cluster {} -----"; blkcat -o 2048 sample.raw {}; echo "----- End Cluster {} -----"' | strings | less
 ~~~
 
 Output (cut):
 ~~~
+----- Start Cluster 20 -----
 FILE0
 11111111111111111111
 22222222222222222222
@@ -112,6 +113,10 @@ FILE0
 abc abc
     evidence
 xyz xyz
+FILE0
+----- End Cluster 20 -----
+----- Start Cluster 25445 -----
+ more more evidence more more evidence more more
 .....
 .....
 .....
