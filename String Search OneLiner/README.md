@@ -95,6 +95,30 @@ Command:
 cat evidence.txt | while read x; do echo $(( `echo $x | cut -f1 -d" "` / 4096 )); done | sort | uniq | xargs -I {} blkcat -o 2048 sample.raw {} | strings | less
 ~~~
 
+Output (cut):
+~~~
+FILE0
+11111111111111111111
+22222222222222222222
+example test blah evidence blah blah example
+44444444444444444444
+55555555555555555555
+6666666666666
+66666
+example 12345 moreEvidence 67890 example
+77777777777777777777
+88888888888888888888
+99999999999999999999
+test text evidences test text
+00000000000000000000 
+FILE0
+abc abc
+    evidence
+xyz xyz
+.....
+.....
+.....
+~~~
 
 
 
