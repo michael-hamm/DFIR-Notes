@@ -5,7 +5,7 @@ S/MIME for encryption. So they send an email with S/MIME based signature.`
 
 It is quit easy to extract the users public certificate out of the signature.
 
-### Extract the user certificate
+## Extract the user certificate
 
 1. Convert the DER file into a PEM file:
 
